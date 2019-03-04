@@ -1,0 +1,12 @@
+# for nethack 3.4.3
+
+# Set default names for common game items
+OPTIONS=name:UhHuh
+OPTIONS=fruit:jellybean, dogname:Rags, catname:Dashigara, horsename:Spike
+
+#Graphics
+OPTIONS=color,decgraphics,lit_corridor,hilite_pet
+OPTIONS=time, showexp, showscore, topten
+
+OPTIONS=safe_pet, pickup_burden:Burdened, !autopickup, autodig
+
