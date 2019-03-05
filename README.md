@@ -10,12 +10,15 @@ Jon Lasser <jon@lasser.org>
 ** Merriwether Sans font: https://www.fontsquirrel.com/fonts/merriweather-sans
 
 #Contents
+* bash\_profile: $HOME/.bash\_profile
 * bashrc: $HOME/.bashrc
 * nethackrc: $HOME/.nethackrc
 * sshconfig: $HOME/.ssh/config
 * vimrc: $HOME/.vimrc
+
+##Mac Only contents
+* DefaultKeyBinding.dict: $HOME/Library/KeyBindings/DefaultKeyBinding.dict
 * \*.terminal: Drag and drop into OS X Terminal
 
 #To Do
 * Makefile to hard-link files automagically
-* Update vimrc to use newer package manager than Pathogen
