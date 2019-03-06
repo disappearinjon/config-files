@@ -15,6 +15,7 @@ any such system automation.
   ./install*
 
 #Contents
+* add: $HOME/bin/add
 * bash\_profile: $HOME/.bash\_profile
 * bashrc: $HOME/.bashrc
 * nethackrc: $HOME/.nethackrc

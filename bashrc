@@ -1,6 +1,6 @@
 [ -f "/etc/bashrc" ] && source /etc/bashrc
 
-export PATH="${PATH}:/opt/local/bin:/usr/local/go/bin"
+export PATH="${PATH}:${HOME}/bin:/opt/local/bin:/usr/local/go/bin"
 
 export EDITOR=vim
 export VISUAL=vim

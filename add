@@ -1,0 +1,25 @@
+#!/usr/bin/env python
+"""
+add: add numbers provided via STDIN, print total to STDOUT
+
+This is a quick CLI tool that can be combined with cut, awk, etc. for
+useful effect
+"""
+import fileinput
+import logging
+
+logging.basicConfig(format='%(message)s')
+
+sum = 0
+for line in fileinput.input():
+    try:
+        sum += int(line)
+    except ValueError:
+        try:
+            sum += float(line)
+        except ValueError:
+            logging.warning(
+                'Could not convert {} to int or float; skipping'.format(
+                    line.strip()))
+
+print(sum)
