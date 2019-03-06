@@ -2,12 +2,17 @@
 Personal Config Files
 Jon Lasser <jon@lasser.org>
 
+This is a set of files that Jon uses to customize his environments,
+packaged with a handy installation script. The script should back up any
+files it's preparing to overwrite, but of course caution is urged with
+any such system automation.
+
 #Instructions
-* Hard-link the files desired to their target locations. DO NOT
-  soft-link, as the installed copies will go away if the directory is
-  deleted, and you don't want that.
-* Install other files from here as recommended:
-** Merriwether Sans font: https://www.fontsquirrel.com/fonts/merriweather-sans
+* Run *./install* or *bash ./install* from this directory, if bash is
+  not in /bin/bash.
+* If wanting to run other than against your home directory, prefix that
+  command with *PREFIX=/new/location*, e.g., *PREFIX=/other/dir
+  ./install*
 
 #Contents
 * bash\_profile: $HOME/.bash\_profile
@@ -21,4 +26,4 @@ Jon Lasser <jon@lasser.org>
 * \*.terminal: Drag and drop into OS X Terminal
 
 #To Do
-* Makefile to hard-link files automagically
+* I'm sure I'll think of something

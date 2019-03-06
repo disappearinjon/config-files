@@ -1,4 +1,7 @@
 Host *			# Defaults
+	AddKeysToAgent yes
+	UseKeychain yes
+	IdentityFile ~/.ssh/id_rsa
 	CheckHostIP yes
 	ForwardX11 no
 #	ForwardAgent yes

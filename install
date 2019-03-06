@@ -1,0 +1,57 @@
+#!/bin/bash
+#
+# Script to install configuration files in the right places
+
+# Get information about our environment
+THISDIR=$(pwd)
+OS=$(uname -s)
+
+# If a file exists, move it to a backup location
+function backup {
+	if [ -f ${PREFIX}/$1 ]; then
+		echo "Moving old $1 to backup"
+		mv ${PREFIX}/$1 ${PREFIX}/$1.bak
+	fi
+}
+
+# Create a symbolic link from $1 in this directory to $PREFIX/$2
+# - perform backup first if necessary
+function link {
+	backup $2
+	ln -s ${THISDIR}/$1 ${PREFIX}/$2
+}
+
+MWF_INSTALL="Please install the Merriwether Sans font from https://www.fontsquirrel.com/fonts/merriweather-sans"
+########################################################################
+########################################################################
+########################################################################
+########################################################################
+# Main Code
+########################################################################
+if [ -z "${PREFIX}" ]; then
+	echo "No Prefix Set - Installing into HOME"
+	PREFIX=${HOME}
+fi
+
+# If an SSH directory isn't created, then make it
+mkdir -p ${PREFIX}/.ssh
+chmod 0700 ${PREFIX}/.ssh
+
+# Individual installation commands
+link bash_profile .bash_profile
+link bashrc .bashrc
+link nethackrc .nethackrc
+link vimrc .vimrc
+link sshconfig .ssh/config
+
+# If we're running on a Mac, we've got a few extra items
+if [ ${OS} = "Darwin" ]; then
+	mkdir -p ${PREFIX}/Library/KeyBindings
+	link DefaultKeyBinding.dict Library/KeyBindings/DefaultKeyBinding.dict
+
+	# Install OS X Terminal profiles
+	open *.terminal
+
+	echo $MWF_INSTALL
+fi
+
