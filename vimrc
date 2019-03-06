@@ -2,6 +2,7 @@ set nocompatible
 set nu
 syntax on
 map K dG
+map  {!}fmt -w 72
 set textwidth=72	" will override below for Python
 set autoindent
 filetype plugin indent on
