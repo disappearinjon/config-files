@@ -1,4 +1,6 @@
-Host *.us-west-2.compute.amazonaws.com
+Host jonlasser.magma.iggy.bz
+    User ubuntu
+    ForwardAgent yes
     localforward 4900 localhost:4900
     localforward 5000 localhost:5000
     localforward 5556 localhost:5556

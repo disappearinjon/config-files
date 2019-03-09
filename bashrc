@@ -11,5 +11,6 @@ trap 'tput sgr0' DEBUG
 export PS1="\[$(tput sgr0)\]\h:\W \u\$ \[$(tput bold setaf 11)\]"
 export PS1="\[$(tput sgr0)\]${PS1}\[$(tput bold setaf 11)\]"
 
-# Suppress Vagrant warning message
-export VAGRANT_USE_VAGRANT_TRIGGERS=1
+# If I'm on an Igneous box, alias the iggy script properly
+[ -x "${HOME}/mesa/tools/iggy.sh" ] && \
+	alias iggy="${HOME}/mesa/tools/iggy.sh"

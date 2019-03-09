@@ -5,7 +5,6 @@ map K dG
 map  {!}fmt -w 72
 set textwidth=72	" will override below for Python
 set autoindent
-filetype plugin indent on
 set shell=bash
 
 " Auto-install vim-plug package manager
@@ -18,8 +17,18 @@ endif
 " vim-plug Plugins
 call plug#begin('~/.vim/plugged')
 Plug 'vim-syntastic/syntastic'
+Plug 'liuchengxu/graphviz.vim'
 call plug#end()
 
+" Dotty/Graphviz recommend file extension now .gv instead of .dot
+au BufNewFile,BufRead *.gv set filetype=dot
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Below is for graphviz
+let g:graphviz_viewer = 'open'
+let g:graphviz_output_format = 'svg'
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Below is for syntastic
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
