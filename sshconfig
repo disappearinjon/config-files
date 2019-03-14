@@ -9,6 +9,7 @@ Host jonlasser.magma.iggy.bz
     localforward 5601 localhost:5601
     localforward 9092 localhost:9092
     localforward 8888 localhost:8888
+    IdentityFile ~/.ssh/jonlasser.pem
 
 Host *			# Defaults
 	AddKeysToAgent yes
