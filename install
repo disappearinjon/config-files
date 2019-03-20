@@ -58,3 +58,9 @@ if [ ${OS} = "Darwin" ]; then
 	echo $MWF_INSTALL
 fi
 
+# Check if I'm on an Ubuntu 14.04 box.  If so, update vim
+[ -e "/etc/os-release" ] && . /etc/os-release
+if [ "${NAME}" = "Ubuntu" -a "${VERSION_ID}" = "14.04" ]; then
+        sudo add-apt-repository -y ppa:pkg-vim/vim-daily
+	sudo apt-get -y update
+fi
