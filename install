@@ -43,6 +43,7 @@ chmod 0700 ${PREFIX}/.ssh
 # Individual installation commands
 link bash_profile .bash_profile
 link bashrc .bashrc
+link gitattributes .gitattributes
 link nethackrc .nethackrc
 link vimrc .vimrc
 link sshconfig .ssh/config

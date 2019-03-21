@@ -2,7 +2,8 @@ set nocompatible
 set nu
 syntax on
 map K dG
-map  {!}fmt -w 72
+map <c-x> {!}fmt -w 72
+map <c-a> 1G!Gfmt -w 72
 set textwidth=72	" will override below for Python
 set autoindent
 set shell=bash
