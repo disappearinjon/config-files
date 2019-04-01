@@ -9,10 +9,13 @@ set autoindent
 set shell=bash
 
 " Manage window splits (Ctrl-W hjkl remapping)
-nmap <silent> <c-k> :wincmd k<CR>
-nmap <silent> <c-j> :wincmd j<CR>
-nmap <silent> <c-h> :wincmd h<CR>
-nmap <silent> <c-l> :wincmd l<CR>
+map <silent> <c-k> :wincmd k<CR>
+map <silent> <c-j> :wincmd j<CR>
+map <silent> <c-h> :wincmd h<CR>
+map <silent> <c-l> :wincmd l<CR>
+
+" New vertical window (non-split)
+map <silent> <c-e> :vne<CR>
 
 " Auto-install vim-plug package manager
 if empty(glob('~/.vim/autoload/plug.vim'))
