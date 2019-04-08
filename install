@@ -45,6 +45,7 @@ link bash_profile .bash_profile
 link bashrc .bashrc
 link gitattributes .gitattributes
 link nethackrc .nethackrc
+link tmux.conf .tmux.conf
 link vimrc .vimrc
 link sshconfig .ssh/config
 
