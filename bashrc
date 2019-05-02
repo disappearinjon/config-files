@@ -31,3 +31,8 @@ if [ -d "${HOME}/mesa/" ]; then
 		export igsrc="${HOME}/mesa/go/src/igneous.io"
 fi
 
+# If I'm on a Mac, then I probably want to load all of my SSH keys
+if [ $(uname) = "Darwin" ]; then
+	/usr/bin/ssh-add -A 2>/dev/null
+fi
+

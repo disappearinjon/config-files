@@ -1,4 +1,10 @@
-Host jonlasser.magma.iggy.bz
+Host github github.com
+	User git
+	Hostname github.com
+	PreferredAuthentications publickey
+
+Host aws jonlasser jonlasser.magma.iggy.bz
+    Hostname jonlasser.magma.iggy.bz
     User ubuntu
     ForwardAgent yes
     localforward 4900 localhost:4900
