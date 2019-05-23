@@ -40,6 +40,16 @@ mkdir -p ${PREFIX}/bin
 mkdir -p ${PREFIX}/.ssh
 chmod 0700 ${PREFIX}/.ssh
 
+# If we have no authorized_keys file, create it. If we have it, copy the
+# contents into the file if not already there
+if [ ! -e ${PREFIX}/.ssh/authorized_keys ]; then
+	cp sshkey-jon-laptop ${PREFIX}/.ssh/authorized_keys
+else
+	grep -q "$(cat sshkey-jon-laptop)" ${PREFIX}/.ssh/authorized_keys || \
+		cat sshkey-jon-laptop >> ${PREFIX}/.ssh/authorized_keys
+fi
+
+
 # Individual installation commands
 link bash_profile .bash_profile
 link bashrc .bashrc
