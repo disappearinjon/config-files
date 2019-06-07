@@ -26,9 +26,14 @@ fi
 	alias iggy="${HOME}/mesa/tools/iggy.sh"
 # ... and set a couple of shell variables, especially $GOPATH
 if [ -d "${HOME}/mesa/" ]; then 
-	[ -x "${HOME}/mesa/go" ] && export GOPATH="${HOME}/mesa/go/"
+	export GOPATH="${HOME}/mesa/go/"
+	export GO11MODULE=off
 	[ -d "${HOME}/mesa/go/src/igneous.io" ] && \
 		export igsrc="${HOME}/mesa/go/src/igneous.io"
+	[ -d "/usr/src/go1.12.5/bin" ] && \
+		export PATH="/usr/src/go1.12.5/bin:${PATH}"
+	[ -d "/usr/local/go1.12/bin" ] && \
+		export PATH="/usr/local/go1.12/bin:${PATH}"
 fi
 
 # If I'm on a Mac, then I probably want to load all of my SSH keys
