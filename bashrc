@@ -26,6 +26,7 @@ fi
 	alias iggy="${HOME}/mesa/tools/iggy.sh"
 # ... and set a couple of shell variables, especially $GOPATH
 if [ -d "${HOME}/mesa/" ]; then 
+	export PATH="${HOME}/mesa/go/bin:${PATH}"
 	export GOPATH="${HOME}/mesa/go/"
 	export GO11MODULE=off
 	[ -d "${HOME}/mesa/go/src/igneous.io" ] && \
