@@ -16,7 +16,7 @@ export HISTCONTROL=ignoreboth
 # least it's unreliable on the Bash 3.x versions used by Mac OS X.  (The
 # failure mode is that it will usually work, but commands like 'cat y |
 # grep x' end up hanging on the grep.)
-if [ ${BASH_VERSINFO[0]} -ge 4 ]; then
+if [ ${BASH_VERSINFO[0]} -ge 4 -a -n "${TERM}" ]; then
 	trap 'tput sgr0' DEBUG
 	export PS1="\[$(tput sgr0)\]${PS1}\[$(tput bold setaf 11)\]"
 fi
