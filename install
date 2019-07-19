@@ -58,6 +58,8 @@ link nethackrc .nethackrc
 link tmux.conf .tmux.conf
 link vimrc .vimrc
 link sshconfig .ssh/config
+link add bin/add
+link dirblame bin/dirblame
 
 # If we're running on a Mac, we've got a few extra items
 if [ ${OS} = "Darwin" ]; then

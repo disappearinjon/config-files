@@ -1,0 +1,6 @@
+#!/bin/sh
+#
+# Quick script from Victor Luft to assess ownership of every
+# git-checked-in file in a given directory.
+find -type f | xargs -L 1 git blame --line-porcelain | grep "author " | \
+	sed -e 's/^author //' | sort | uniq -c | sort -rn | head -10
