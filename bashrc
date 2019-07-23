@@ -24,6 +24,9 @@ fi
 # If I'm on an Igneous box, alias the iggy script properly...
 [ -x "${HOME}/mesa/tools/iggy.sh" ] && \
 	alias iggy="${HOME}/mesa/tools/iggy.sh"
+	alias piggy="${HOME}/mesa/tools/iggy.sh -e https://cloud.igneous.io/"
+	alias siggy="${HOME}/mesa/tools/iggy.sh -e https://staging.iggy.bz"
+	alias diggy="${HOME}/mesa/tools/iggy.sh -e https://dev.iggy.bz"
 # ... and set a couple of shell variables, especially $GOPATH
 if [ -d "${HOME}/mesa/" ]; then 
 	export PATH="${HOME}/mesa/go/bin:${PATH}"
