@@ -34,10 +34,16 @@ if [ -d "${HOME}/mesa/" ]; then
 	export GO11MODULE=off
 	[ -d "${HOME}/mesa/go/src/igneous.io" ] && \
 		export igsrc="${HOME}/mesa/go/src/igneous.io"
-	[ -d "/usr/src/go1.12.5/bin" ] && \
+	if [ -d "/usr/src/go1.13.3/go/bin" ]; then
+		export PATH="/usr/src/go1.13.3/go/bin:${PATH}"
+		export GOLANG_VERSION=1.13.3
+	elif [ -d "/usr/src/go1.12.5/bin" ]; then
 		export PATH="/usr/src/go1.12.5/bin:${PATH}"
-	[ -d "/usr/local/go1.12/bin" ] && \
+		export GOLANG_VERSION=1.12.5
+	elif [ -d "/usr/local/go1.12/bin" ]; then
 		export PATH="/usr/local/go1.12/bin:${PATH}"
+		export GOLANG_VERSION=1.12
+	fi
 fi
 
 # If I'm on a Mac, then I probably want to load all of my SSH keys
