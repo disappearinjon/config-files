@@ -51,3 +51,22 @@ if [ $(uname) = "Darwin" ]; then
 	/usr/bin/ssh-add -A 2>/dev/null
 fi
 
+# If rgrep doesn't exist, then alias one
+which rgrep || rgrep() {
+    if [ "$#" -eq 0 ]; then
+        echo "Usage: $FUNCNAME pattern [options] -- see grep usage"
+        return
+    # one arg - pattern
+    elif [ "$#" -eq 1 ]; then
+        grep -rn "$@" *;
+    # 2 args - flag pattern
+    elif [ "$#" -eq 2 ]; then
+        first=$1
+        shift
+        grep -rn "$first" "$@" *;
+    # more than 2 args
+    else
+        echo "Usage: $FUNCNAME 2+ params not yet supported"
+        return
+    fi
+}
