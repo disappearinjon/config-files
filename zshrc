@@ -9,6 +9,9 @@ export VISUAL=vim
 # space
 export HISTCONTROL=ignoreboth
 
+# If $HOME/.zsh doesn't exist, create it
+[ -d "${HOME}/.zsh" ] || mkdir "${HOME}/.zsh"
+
 # If I'm on an Igneous box...
 if [ -x "${HOME}/mesa/tools/iggy.sh" ]; then
 	# alias the iggy script properly...
@@ -16,6 +19,9 @@ if [ -x "${HOME}/mesa/tools/iggy.sh" ]; then
 	alias piggy="${HOME}/mesa/tools/iggy.sh -e https://cloud.igneous.io/"
 	alias siggy="${HOME}/mesa/tools/iggy.sh -e https://staging.iggy.bz"
 	alias diggy="${HOME}/mesa/tools/iggy.sh -e https://dev.iggy.bz"
+	# Generate a new zsh completion file
+	[ -d "${HOME}/.zsh" ] && "${HOME}/mesa/tools/iggy.sh" completion zsh > "${HOME}/.zsh/_iggy"
+
 fi
 	
 # ... and set a couple of shell variables, especially $GOPATH
@@ -62,9 +68,11 @@ fi
 bindkey -e	# EMACS-style key bindings
 
 # Autocompletion stuff I don't pretend to understand
+fpath=(~/.zsh $fpath)
 zstyle :compinstall filename '/Users/jonlasser/.zshrc'
 autoload -Uz compinit
 compinit
+compdef _iggy iggy.sh	# use _iggy completion for all iggy.sh
 
 # This supposedly has to be the last thing in the file
 [ -d "${HOME}/src/zsh-syntax-highlighting" ] && \
