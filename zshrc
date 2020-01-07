@@ -1,4 +1,4 @@
-[ -f "/etc/bashrc" ] && source /etc/bashrc
+[ -f "/etc/zshrc" ] && source /etc/zshrc
 
 export PATH="${PATH}:${HOME}/bin:/opt/local/bin:/usr/local/go/bin"
 
@@ -9,24 +9,15 @@ export VISUAL=vim
 # space
 export HISTCONTROL=ignoreboth
 
-# Awesome color trick for bash: set color to yellow in our prompt, and
-# use trap DEBUG to set it back before running the command in question.
-#
-# Unfortunately, this only seems to work on Bash 4.x and above -- or at
-# least it's unreliable on the Bash 3.x versions used by Mac OS X.  (The
-# failure mode is that it will usually work, but commands like 'cat y |
-# grep x' end up hanging on the grep.)
-if [ ${BASH_VERSINFO[0]} -ge 4 -a -n "${TERM}" ]; then
-	trap 'tput sgr0' DEBUG
-	export PS1="\[$(tput sgr0)\]${PS1}\[$(tput bold setaf 11)\]"
-fi
-
-# If I'm on an Igneous box, alias the iggy script properly...
-[ -x "${HOME}/mesa/tools/iggy.sh" ] && \
+# If I'm on an Igneous box...
+if [ -x "${HOME}/mesa/tools/iggy.sh" ]; then
+	# alias the iggy script properly...
 	alias iggy="${HOME}/mesa/tools/iggy.sh"
 	alias piggy="${HOME}/mesa/tools/iggy.sh -e https://cloud.igneous.io/"
 	alias siggy="${HOME}/mesa/tools/iggy.sh -e https://staging.iggy.bz"
 	alias diggy="${HOME}/mesa/tools/iggy.sh -e https://dev.iggy.bz"
+fi
+	
 # ... and set a couple of shell variables, especially $GOPATH
 if [ -d "${HOME}/mesa/" ]; then 
 	export PATH="${HOME}/mesa/go/bin:${PATH}"
@@ -37,12 +28,6 @@ if [ -d "${HOME}/mesa/" ]; then
 	if [ -d "/usr/src/go1.13.3/go/bin" ]; then
 		export PATH="/usr/src/go1.13.3/go/bin:${PATH}"
 		export GOLANG_VERSION=1.13.3
-	elif [ -d "/usr/src/go1.12.5/bin" ]; then
-		export PATH="/usr/src/go1.12.5/bin:${PATH}"
-		export GOLANG_VERSION=1.12.5
-	elif [ -d "/usr/local/go1.12/bin" ]; then
-		export PATH="/usr/local/go1.12/bin:${PATH}"
-		export GOLANG_VERSION=1.12
 	elif [ -d "/usr/local/go/bin" ]; then
 		export PATH="/usr/local/go/bin:${PATH}"
 		# export GOLANG_VERSION=1.13.3
@@ -55,7 +40,7 @@ if [ $(uname) = "Darwin" ]; then
 fi
 
 # If rgrep doesn't exist, then alias one
-which rgrep || rgrep() {
+	[ "$(whence -w rgrep)" != "none" ] || rgrep() {
     if [ "$#" -eq 0 ]; then
         echo "Usage: $FUNCNAME pattern [options] -- see grep usage"
         return
@@ -73,3 +58,18 @@ which rgrep || rgrep() {
         return
     fi
 }
+
+bindkey -e	# EMACS-style key bindings
+
+# Autocompletion stuff I don't pretend to understand
+zstyle :compinstall filename '/Users/jonlasser/.zshrc'
+autoload -Uz compinit
+compinit
+
+# This supposedly has to be the last thing in the file
+[ -d "${HOME}/src/zsh-syntax-highlighting" ] && \
+	source "${HOME}/src/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+# Just make the user's command bold. All the other syntax highlighting
+# is kind of overwhelming, at least right now
+ZSH_HIGHLIGHT_HIGHLIGHTERS=(line)
+ZSH_HIGHLIGHT_STYLES[line]='bold'

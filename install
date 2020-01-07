@@ -36,6 +36,9 @@ fi
 # Make a bin directory
 mkdir -p ${PREFIX}/bin
 
+# Make a src directory (we should have one, but just in case)
+mkdir -p ${PREFIX}/src
+
 # If an SSH directory isn't created, then make it
 mkdir -p ${PREFIX}/.ssh
 chmod 0700 ${PREFIX}/.ssh
@@ -53,6 +56,7 @@ fi
 # Individual installation commands
 link bash_profile .bash_profile
 link bashrc .bashrc
+link zshrc .zshrc
 link gitattributes .gitattributes
 link nethackrc .nethackrc
 link tmux.conf .tmux.conf
@@ -60,6 +64,12 @@ link vimrc .vimrc
 link sshconfig .ssh/config
 link add bin/add
 link dirblame bin/dirblame
+
+# Get zsh highlighting
+pushd .
+cd "${PREFIX}/src"
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git
+popd
 
 # If we're running on a Mac, we've got a few extra items
 if [ ${OS} = "Darwin" ]; then
@@ -83,9 +93,9 @@ fi
 # /usr/src
 if [ "${NAME}" = "Ubuntu" -a "${VERSION_ID}" = "14.04" -a \
 	-d "${HOME}/mesa" ]; then
-	sudo mkdir -p /usr/src/go1.12.5
-	pushd /usr/src/go1.12.5
-	sudo curl https://dl.google.com/go/go1.12.5.linux-amd64.tar.gz | \
+	sudo mkdir -p /usr/src/go1.13.3
+	pushd /usr/src/go1.13.3
+	sudo curl https://dl.google.com/go/go1.13.3.linux-amd64.tar.gz | \
 		tar -x -z --strip-components=1 -f -
 	popd
 fi
