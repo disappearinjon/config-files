@@ -31,7 +31,12 @@ fi
 	if [ -a /usr/share/bash-completion/bash_completion ]; then
 		source /usr/share/bash-completion/bash_completion
 		source <("${HOME}/mesa/tools/iggy.sh" completion bash)
-	# FIXME: should probably figure out mac equivalent
+	elif [ -a /usr/local/etc/bash_completion ]; then
+		source /usr/local/etc/bash_completion
+		source <("${HOME}/mesa/tools/iggy.sh" completion bash)
+	elif [ -a /opt/local/etc/bash_completion ]; then
+		source /opt/local/etc/bash_completion
+		source <("${HOME}/mesa/tools/iggy.sh" completion bash)
 	fi
 # ... and set a couple of shell variables, especially $GOPATH
 if [ -d "${HOME}/mesa/" ]; then 
