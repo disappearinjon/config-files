@@ -65,7 +65,9 @@ fi
     fi
 }
 
+# General stuff
 bindkey -e	# EMACS-style key bindings
+PROMPT='%(?.%B%F{green} ok%b.%F{red}%?) %f [%(!.%F{red}.)%n@%m%\] %1~ %f%# '
 
 # Autocompletion stuff I don't pretend to understand
 fpath=(~/.zsh $fpath)
