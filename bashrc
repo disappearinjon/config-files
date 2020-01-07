@@ -28,8 +28,11 @@ fi
 	alias siggy="${HOME}/mesa/tools/iggy.sh -e https://staging.iggy.bz"
 	alias diggy="${HOME}/mesa/tools/iggy.sh -e https://dev.iggy.bz"
 	# set up command completion
-	source /usr/share/bash-completion/bash_completion
-	source <("${HOME}/mesa/tools/iggy.sh" completion bash)
+	if [ -a /usr/share/bash-completion/bash_completion ]; then
+		source /usr/share/bash-completion/bash_completion
+		source <("${HOME}/mesa/tools/iggy.sh" completion bash)
+	# FIXME: should probably figure out mac equivalent
+	fi
 # ... and set a couple of shell variables, especially $GOPATH
 if [ -d "${HOME}/mesa/" ]; then 
 	export PATH="${HOME}/mesa/go/bin:${PATH}"
