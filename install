@@ -82,11 +82,14 @@ if [ ${OS} = "Darwin" ]; then
 	echo $MWF_INSTALL
 fi
 
-# Check if I'm on an Ubuntu 14.04 box.  If so, update vim
+# Check if I'm on an Ubuntu 14.04 box.  If so, update vim and install
+# zsh
 [ -e "/etc/os-release" ] && . /etc/os-release
 if [ "${NAME}" = "Ubuntu" -a "${VERSION_ID}" = "14.04" ]; then
         sudo add-apt-repository -y ppa:jonathonf/vim
 	sudo apt-get -y update
+	sudo apt-get -y install zsh zsh-doc
+	sudo chsh -s /bin/zsh ubuntu
 fi
 
 # If I'm on Ubuntu 14.04 and have a mesa directory, install new go into
