@@ -27,6 +27,9 @@ fi
 	alias piggy="${HOME}/mesa/tools/iggy.sh -e https://cloud.igneous.io/"
 	alias siggy="${HOME}/mesa/tools/iggy.sh -e https://staging.iggy.bz"
 	alias diggy="${HOME}/mesa/tools/iggy.sh -e https://dev.iggy.bz"
+	# set up command completion
+	source /usr/share/bash-completion/bash_completion
+	source <("${HOME}/mesa/tools/iggy.sh" completion bash)
 # ... and set a couple of shell variables, especially $GOPATH
 if [ -d "${HOME}/mesa/" ]; then 
 	export PATH="${HOME}/mesa/go/bin:${PATH}"
@@ -55,7 +58,7 @@ if [ $(uname) = "Darwin" ]; then
 fi
 
 # If rgrep doesn't exist, then alias one
-which rgrep || rgrep() {
+which rgrep >/dev/null || rgrep() {
     if [ "$#" -eq 0 ]; then
         echo "Usage: $FUNCNAME pattern [options] -- see grep usage"
         return
