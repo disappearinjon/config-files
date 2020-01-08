@@ -7,6 +7,13 @@ export EDITOR=vim
 export VISUAL=vim
 bindkey -e	# EMACS-style key bindings
 
+# Shell history
+export HISTFILE="${HOME}/.zsh_history"
+export HISTSIZE=5000
+export SAVEHIST=${HISTSIZE}
+setopt hist_ignore_all_dups	# ignore duplicates
+setopt hist_ignore_space	# don't log commands preceded with a space
+
 # Set prompt
 PROMPT='%(?.%B%F{green} ok%b.%F{red}%?)%f [%(!.%F{red}.)%n@%m%\] %1~%f%# '
 
@@ -19,11 +26,6 @@ if [ $(uname) = "Darwin" ]; then
 elif [ -f /etc/debian_version ]; then
 	alias upgrade-installed='sudo apt-get -y update && sudo apt-get -y dist-upgrade && sudo apt-get -y autoremove'
 fi
-
-
-# Don't keep dupes in command history, as well as command prefaced by a
-# space
-export HISTCONTROL=ignoreboth
 
 # If $HOME/.zsh doesn't exist, create it
 [ -d "${HOME}/.zsh" ] || mkdir "${HOME}/.zsh"
