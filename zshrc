@@ -46,7 +46,7 @@ if [ $(uname) = "Darwin" ]; then
 fi
 
 # If rgrep doesn't exist, then alias one
-	[ "$(whence -w rgrep)" != "none" ] || rgrep() {
+fake_rgrep() {
     if [ "$#" -eq 0 ]; then
         echo "Usage: $FUNCNAME pattern [options] -- see grep usage"
         return
@@ -64,6 +64,7 @@ fi
         return
     fi
 }
+[ "$(whence -w rgrep)" != "rgrep: none" ] || alias rgrep=fake_rgrep
 
 # General stuff
 bindkey -e	# EMACS-style key bindings
