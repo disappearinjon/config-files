@@ -2,8 +2,24 @@
 
 export PATH="${PATH}:${HOME}/bin:/opt/local/bin:/usr/local/go/bin"
 
+# Editor and shell keybindings
 export EDITOR=vim
 export VISUAL=vim
+bindkey -e	# EMACS-style key bindings
+
+# Set prompt
+PROMPT='%(?.%B%F{green} ok%b.%F{red}%?)%f [%(!.%F{red}.)%n@%m%\] %1~%f%# '
+
+# General aliases
+alias astm='tmux attach||tmux'
+
+# Make upgrading software a bit easier
+if [ $(uname) = "Darwin" ]; then
+	alias upgrade-installed='port sync && port upgrade outdated && port uinstall inactive'
+elif [ -f /etc/debian_version ]; then
+	alias upgrade-installed='sudo apt-get -y update && sudo apt-get -y dist-upgrade && sudo apt-get -y autoremove'
+fi
+
 
 # Don't keep dupes in command history, as well as command prefaced by a
 # space
@@ -65,10 +81,6 @@ fake_rgrep() {
     fi
 }
 [ "$(whence -w rgrep)" != "rgrep: none" ] || alias rgrep=fake_rgrep
-
-# General stuff
-bindkey -e	# EMACS-style key bindings
-PROMPT='%(?.%B%F{green} ok%b.%F{red}%?)%f [%(!.%F{red}.)%n@%m%\] %1~%f%# '
 
 # Autocompletion stuff I don't pretend to understand
 fpath=(~/.zsh $fpath)
