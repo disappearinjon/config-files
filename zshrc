@@ -16,7 +16,7 @@ setopt hist_ignore_space	# don't log commands preceded with a space
 setopt share_history   		# share history across terminals
 
 # Set prompt
-PROMPT='%(?.%B%F{green} ok%b.%F{red}%?)%f [%(!.%F{red}.)%n@%m%\] %1~%f%# '
+PROMPT='%(?.%B%F{green} ok%b.%F{red}%?)%f %(!.%F{red}.)%n@%m %1~%f%# '
 
 # General aliases
 alias astm='tmux attach||tmux'
