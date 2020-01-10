@@ -23,7 +23,7 @@ alias astm='tmux attach||tmux'
 
 # Make upgrading software a bit easier
 if [ $(uname) = "Darwin" ]; then
-	alias upgrade-installed='port sync && port upgrade outdated && port uinstall inactive'
+	alias upgrade-installed='port sync && port upgrade outdated && port uninstall inactive'
 elif [ -f /etc/debian_version ]; then
 	alias upgrade-installed='sudo apt-get -y update && sudo apt-get -y dist-upgrade && sudo apt-get -y autoremove'
 fi
