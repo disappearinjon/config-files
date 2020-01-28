@@ -11,9 +11,10 @@ bindkey -e	# EMACS-style key bindings
 export HISTFILE="${HOME}/.zsh_history"
 export HISTSIZE=5000
 export SAVEHIST=${HISTSIZE}
+export APPEND_HISTORY=1
 setopt hist_ignore_all_dups	# ignore duplicates
 setopt hist_ignore_space	# don't log commands preceded with a space
-setopt share_history   		# share history across terminals
+# setopt share_history   		# share history across terminals
 
 # Set prompt
 PROMPT='%(?.%B%F{green} ok%b.%F{red}%?)%f %(!.%F{red}.)%n@%m %1~%f%# '
