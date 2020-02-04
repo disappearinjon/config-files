@@ -20,6 +20,7 @@ setopt hist_ignore_space	# don't log commands preceded with a space
 PROMPT='%(?.%B%F{green} ok%b.%F{red}%?)%f %(!.%F{red}.)%n@%m %1~%f%# '
 
 # General aliases
+alias history="history 1"	# make like bash
 alias astm='tmux attach||tmux'
 
 # Make upgrading software a bit easier
