@@ -22,6 +22,7 @@ PROMPT='%(?.%B%F{green} ok%b.%F{red}%?)%f %(!.%F{red}.)%n@%m %1~%f%# '
 # General aliases
 alias history="history 1"	# make like bash
 alias astm='tmux attach||tmux'
+alias fixssh='export $(tmux showenv SSH_AUTH_SOCK)' # fix ssh inside tmux
 
 # Make upgrading software a bit easier
 if [ $(uname) = "Darwin" ]; then
