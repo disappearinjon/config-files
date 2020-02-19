@@ -24,10 +24,17 @@ alias history="history 1"	# make like bash
 alias astm='tmux attach||tmux'
 alias fixssh='export $(tmux showenv SSH_AUTH_SOCK)' # fix ssh inside tmux
 
-# Make upgrading software a bit easier
+# Mac-specific configurations
 if [ $(uname) = "Darwin" ]; then
+	/usr/bin/ssh-add -A 2>/dev/null		# load all SSH keys
+	alias df="df -Ph"			# suppress inode counts
+	# Fancy ports upgrade
 	alias upgrade-installed='port sync && port upgrade outdated && port uninstall inactive'
-elif [ -f /etc/debian_version ]; then
+fi
+
+# Debian/Ubuntu-specific configurations
+if [ -f /etc/debian_version ]; then
+	# Make upgrading software a bit easier
 	alias upgrade-installed='sudo apt-get -y update && sudo apt-get -y dist-upgrade && sudo apt-get -y autoremove'
 fi
 
@@ -60,11 +67,6 @@ if [ -d "${HOME}/mesa/" ]; then
 		export PATH="/usr/local/go/bin:${PATH}"
 		# export GOLANG_VERSION=1.13.3
 	fi
-fi
-
-# If I'm on a Mac, then I probably want to load all of my SSH keys
-if [ $(uname) = "Darwin" ]; then
-	/usr/bin/ssh-add -A 2>/dev/null
 fi
 
 # If rgrep doesn't exist, then alias one

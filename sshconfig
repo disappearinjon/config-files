@@ -29,6 +29,12 @@ Host baremetal baremetal-slave-0 baremetal-slave-0.int.iggy.bz
 	IdentityFile ~/.ssh/iggybot_rsa
 	ForwardAgent yes
 
+Host jtltest1 jtltest1.iggy.bz
+	Hostname jtltest1.iggy.bz
+	User ubuntu
+	IdentityFile ~/.ssh/bot-master.pem
+	ForwardAgent yes
+
 Host xen xen.int xen.int.iggy.bz
 	Hostname xen.int.iggy.bz
 	User ubuntu
