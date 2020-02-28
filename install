@@ -71,6 +71,12 @@ cd "${PREFIX}/src"
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git
 popd
 
+# Configure git
+git config --global user.name "Jon Lasser"
+# The next line will be overridden by vagrant-custom on Igneous vagrants
+git config --global user.email jon@lasser.org
+git config --global core.editor vim
+
 # If we're running on a Mac, we've got a few extra items
 if [ ${OS} = "Darwin" ]; then
 	mkdir -p ${PREFIX}/Library/KeyBindings
