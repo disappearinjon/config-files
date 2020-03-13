@@ -1,8 +1,12 @@
+### General
+#
 Host github github.com
 	User git
 	Hostname github.com
 	PreferredAuthentications publickey
 
+### Igneous-specific
+#
 Host aws jonlasser jonlasser.magma.iggy.bz
 	Hostname jonlasser.magma.iggy.bz
 	User ubuntu
@@ -17,17 +21,17 @@ Host aws jonlasser jonlasser.magma.iggy.bz
 	localforward 8888 localhost:8888
 	IdentityFile ~/.ssh/jonlasser.pem
 
-Host docker docker-dev lasser-docker-dev.magma.iggy.bz
-	Hostname lasser-docker-dev.magma.iggy.bz
-	User ubuntu
-	ForwardAgent yes
-	IdentityFile ~/.ssh/jonlasser.pem
-
 Host baremetal baremetal-slave-0 baremetal-slave-0.int.iggy.bz
 	Hostname baremetal-slave-0.int.iggy.bz
 	User ubuntu
 	IdentityFile ~/.ssh/iggybot_rsa
 	ForwardAgent yes
+
+Host docker docker-dev lasser-docker-dev.magma.iggy.bz
+	Hostname lasser-docker-dev.magma.iggy.bz
+	User ubuntu
+	ForwardAgent yes
+	IdentityFile ~/.ssh/jonlasser.pem
 
 Host jtltest1 jtltest1.iggy.bz
 	Hostname jtltest1.iggy.bz
@@ -35,15 +39,25 @@ Host jtltest1 jtltest1.iggy.bz
 	IdentityFile ~/.ssh/bot-master.pem
 	ForwardAgent yes
 
+# Firewall
+Host office office.iggy.bz
+	Hostname office.iggy.bz
+	User disappearinjon
+	IdentityFile ~/.ssh/id_rsa
+	DynamicForward 8080
+	GatewayPorts yes
+
 Host xen xen.int xen.int.iggy.bz
 	Hostname xen.int.iggy.bz
 	User ubuntu
 	IdentityFile ~/.ssh/xen_rsa
 	ForwardAgent yes
 
-Host *			# Defaults
-	AddKeysToAgent yes
-	UseKeychain yes
+# Defaults
+#
+Host *
+#	AddKeysToAgent yes
+#	UseKeychain yes
 	IdentityFile ~/.ssh/id_rsa
 	CheckHostIP yes
 	ForwardX11 no
