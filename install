@@ -64,6 +64,7 @@ link vimrc .vimrc
 link sshconfig .ssh/config
 link add bin/add
 link dirblame bin/dirblame
+link igvpn bin/igvpn
 
 # Get zsh highlighting
 pushd .

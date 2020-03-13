@@ -1,0 +1,15 @@
+#!/bin/bash
+SSHCMD="/usr/bin/ssh -f -N office"
+
+case "$1" in 
+	up)
+		$SSHCMD
+		;;
+	down)
+		ps xwww|grep -v grep|grep "${SSHCMD}"| \
+			awk '{ print $1 }'|xargs kill
+		;;
+	*)
+		echo "$0 command must be 'up' or 'down'"
+		;;
+esac
