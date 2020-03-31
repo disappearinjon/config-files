@@ -1,0 +1,23 @@
+#!/bin/bash
+SSHCMD="/usr/bin/ssh -f -N office"
+
+case "$1" in 
+	up)
+		$SSHCMD
+		;;
+	down)
+		ps xwww|grep -v grep|grep "${SSHCMD}"| \
+			awk '{ print $1 }'|xargs kill
+		;;
+	status)
+		if pgrep -f "${SSHCMD}" > /dev/null; then
+			echo "up"
+		else
+			echo "down"
+			exit 1
+		fi
+		;;
+	*)
+		echo "$0 command must be 'up', 'down', or 'status'."
+		;;
+esac
