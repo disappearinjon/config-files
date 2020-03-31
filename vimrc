@@ -76,7 +76,8 @@ let g:go_highlight_build_constraints = 1
 
 let g:syntastic_go_checkers = ['go', 'golint', 'errcheck']
 
-let g:syntastic_python_python_exec = '/opt/local/bin/python3'
+let g:syntastic_python_python_exec = '/usr/bin/python3'
+let g:syntastic_python_checker = 'pycodestyle'
 
 " Open go doc in vertical window, horizontal, or tab
 au Filetype go nnoremap <leader>v :vsp <CR>:exe "GoDef" <CR>
