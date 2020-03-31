@@ -42,8 +42,8 @@ Host xen xen.int xen.int.iggy.bz
 	ForwardAgent yes
 
 Host *			# Defaults
-	AddKeysToAgent yes
-	UseKeychain yes
+#	AddKeysToAgent yes
+#	UseKeychain yes
 	IdentityFile ~/.ssh/id_rsa
 	CheckHostIP yes
 	ForwardX11 no
