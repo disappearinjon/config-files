@@ -72,6 +72,9 @@ cd "${PREFIX}/src"
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git
 popd
 
+# Not sure why this is wrong but it's easy enough to fix
+sudo chown -R $(whoami) "${HOME}/.vim"
+
 # Configure git
 git config --global user.name "Jon Lasser"
 # The next line will be overridden by vagrant-custom on Igneous vagrants
