@@ -11,15 +11,16 @@ Host aws jonlasser jonlasser.magma.iggy.bz
 	Hostname jonlasser.magma.iggy.bz
 	User ubuntu
 	ForwardAgent yes
-	localforward 4900 localhost:4900
-	localforward 5000 localhost:5000
-	localforward 5556 localhost:5556
-	localforward 5555 localhost:5555
-	localforward 3000 localhost:3000
-	localforward 5601 localhost:5601
-	localforward 9092 localhost:9092
-	localforward 8888 localhost:8888
 	IdentityFile ~/.ssh/jonlasser.pem
+# The below port forwards not needed with use of username.proxy.iggy.bz
+#	localforward 4900 localhost:4900
+#	localforward 5000 localhost:5000
+#	localforward 5556 localhost:5556
+#	localforward 5555 localhost:5555
+#	localforward 3000 localhost:3000
+#	localforward 5601 localhost:5601
+#	localforward 9092 localhost:9092
+#	localforward 8888 localhost:8888
 
 Host baremetal baremetal-slave-0 baremetal-slave-0.int.iggy.bz
 	Hostname baremetal-slave-0.int.iggy.bz
