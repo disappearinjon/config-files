@@ -51,6 +51,15 @@ if [ -x "${HOME}/mesa/tools/iggy.sh" ]; then
 	# Generate a new zsh completion file
 	[ -d "${HOME}/.zsh" ] && "${HOME}/mesa/tools/iggy.sh" completion zsh > "${HOME}/.zsh/_iggy"
 
+	# add K8s helpers
+	function kc() {
+		plume_siteid=$(${HOME}/mesa/tools/iggy.sh sites list 2>/dev/null | grep plume-sim | awk '{print $1}')
+		if [ "${plume_siteid}" ]; then
+			$(${HOME}/mesa/k8s/sites/kubectl-config.sh -s  ${plume_siteid}) $*
+		else
+			echo "Plume site does not appear to be running" >&2
+		fi
+	}
 fi
 	
 # ... and set a couple of shell variables, especially $GOPATH
