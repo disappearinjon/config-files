@@ -76,6 +76,9 @@ if [ -d "${HOME}/mesa/" ]; then
 		export PATH="/usr/local/go/bin:${PATH}"
 		# export GOLANG_VERSION=1.13.3
 	fi
+
+	# Auto shutdown
+	export SCHEDULE_NAME=PST
 fi
 
 # If rgrep doesn't exist, then alias one
