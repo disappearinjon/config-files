@@ -83,3 +83,15 @@ let g:syntastic_python_checker = 'pycodestyle'
 au Filetype go nnoremap <leader>v :vsp <CR>:exe "GoDef" <CR>
 au Filetype go nnoremap <leader>s :sp <CR>:exe "GoDef"<CR>
 au Filetype go nnoremap <leader>t :tab split <CR>:exe "GoDef"<CR>
+
+" Status Line configuration
+set laststatus=2	"always display
+set statusline=%t       "tail of the filename
+set statusline+=%h      "help file flag
+set statusline+=%m      "modified flag
+set statusline+=%r      "read only flag
+set statusline+=\ %y      "filetype
+set statusline+=%=      "left/right separator
+set statusline+=%c,     "cursor column
+set statusline+=%l/%L   "cursor line/total lines
+set statusline+=\ %P    "percent through file
