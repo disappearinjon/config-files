@@ -115,3 +115,6 @@ if [ "${NAME}" = "Ubuntu" -a "${VERSION_ID}" = "14.04" -a \
 		tar -x -z --strip-components=1 -f -
 	popd
 fi
+
+# Update Go binaries for go-vim plugin
+vim -es '+:GoInstallBinaries' '+:GoUpdateBinaries gopls' '+:q!'
