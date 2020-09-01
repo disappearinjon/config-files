@@ -60,6 +60,13 @@ if [ -x "${HOME}/mesa/tools/iggy.sh" ]; then
 			echo "Plume site does not appear to be running" >&2
 		fi
 	}
+
+	LAVABIN="${HOME}/mesa/go/bin/linux_amd64/lava"
+	alias dlava="LAVA_ENDPOINT=https://dev.iggy.bz $LAVABIN"
+	alias slava="LAVA_ENDPOINT=https://staging.iggy.bz $LAVABIN"
+	alias plava="LAVA_ENDPOINT=https://cloud.iggy.bz $LAVABIN"
+	alias lava="$LAVABIN"
+
 fi
 	
 # ... and set a couple of shell variables, especially $GOPATH
